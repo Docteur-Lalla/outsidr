@@ -1,7 +1,7 @@
 package fr.istic.m2;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JPATest {
@@ -32,8 +32,9 @@ public class JPATest {
     private void createUser() {
         int numOfUser = manager.createQuery("Select a From User a", User.class).getResultList().size();
         if (numOfUser == 0) {
-            manager.persist(new User("toto", "titi", "tata"));
-            manager.persist(new User("titi", "tata", "toto"));
+            List<Registration> regs = new ArrayList<Registration>();
+            manager.persist(new User("toto", "titi", "tata", regs));
+            manager.persist(new User("titi", "tata", "toto", regs));
         }
     }
 

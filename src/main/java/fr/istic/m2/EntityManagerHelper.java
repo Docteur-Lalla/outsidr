@@ -15,6 +15,7 @@ public class EntityManagerHelper {
     try {
       tempEntityManager = Persistence.createEntityManagerFactory("dev");
     } catch (PersistenceException e) {
+      e.printStackTrace();
       tempEntityManager = Persistence.createEntityManagerFactory("devMySQL");
     }
 

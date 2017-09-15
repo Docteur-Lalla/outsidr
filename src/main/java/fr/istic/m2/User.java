@@ -3,6 +3,8 @@ package fr.istic.m2;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class User {
@@ -11,14 +13,17 @@ public class User {
   private String name;
   private String password;
   private String mail;
+  private List<Registration> registration;
 
   public User() {
   }
 
-  public User(String name, String password, String mail) {
+  public User(String name, String password, String mail, List<Registration> registration) {
     this.name = name;
+
     this.password = password;
     this.mail = mail;
+    this.registration = registration;
   }
 
   @Id
@@ -53,5 +58,14 @@ public class User {
 
   public void setMail(String mail) {
     this.mail = mail;
+  }
+
+  @OneToMany
+  public List<Registration> getRegistration() {
+    return registration;
+  }
+
+  public void setRegistration(List<Registration> registration) {
+    this.registration = registration;
   }
 }

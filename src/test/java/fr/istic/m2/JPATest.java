@@ -1,26 +1,8 @@
 package fr.istic.m2;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceException;
-
 public class JPATest {
   public static void main(String[] args) {
-
-    EntityManagerFactory factory;
-
-    try {
-      factory = Persistence.createEntityManagerFactory("dev");
-    } catch (PersistenceException e) {
-      factory = Persistence.createEntityManagerFactory("devMySQL");
-    }
-
-    EntityManager manager = factory.createEntityManager();
-
-    EntityTransaction tx = manager.getTransaction();
-    tx.begin();
+    EntityManagerHelper.beginTransaction();
 
     try {
 
@@ -28,9 +10,7 @@ public class JPATest {
       e.printStackTrace();
     }
 
-    tx.commit();
-
-    manager.close();
-    factory.close();
+    EntityManagerHelper.commit();
+    EntityManagerHelper.closeEntityManagerFactory();
   }
 }

@@ -1,4 +1,4 @@
-package fr.istic.m2;
+package fr.istic.m2.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

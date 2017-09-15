@@ -1,5 +1,8 @@
 package fr.istic.m2;
 
+import fr.istic.m2.entities.Registration;
+import fr.istic.m2.entities.User;
+
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.List;

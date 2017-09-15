@@ -6,17 +6,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Meteo {
-  private Long id;
-  private Boolean snowing;
-  private Integer temperature;
-  private Integer wave;
-  private Integer wind;
+  private int id;
+  private boolean snowing;
+  private int temperature;
+  private int wave;
+  private int wind;
 
   public Meteo() {
 
   }
 
-  public Meteo(Long id, Boolean snowing, Integer temperature, Integer wave, Integer wind) {
+  public Meteo(int id, boolean snowing, int temperature, int wave, int wind) {
     this.id = id;
     this.snowing = snowing;
     this.temperature = temperature;
@@ -26,43 +26,43 @@ public class Meteo {
 
   @Id
   @GeneratedValue
-  public Long getId() {
+  public int getId() {
     return id;
   }
 
-  public void setId(Long id) {
+  public void setId(int id) {
     this.id = id;
   }
 
-  public Boolean isSnowing() {
+  public boolean isSnowing() {
     return snowing;
   }
 
-  public void setSnowing(Boolean snowing) {
+  public void setSnowing(boolean snowing) {
     this.snowing = snowing;
   }
 
-  public Integer getTemperature() {
+  public int getTemperature() {
     return temperature;
   }
 
-  public void setTemperature(Integer temperature) {
+  public void setTemperature(int temperature) {
     this.temperature = temperature;
   }
 
-  public Integer getWave() {
+  public int getWave() {
     return wave;
   }
 
-  public void setWave(Integer wave) {
+  public void setWave(int wave) {
     this.wave = wave;
   }
 
-  public Integer getWind() {
+  public int getWind() {
     return wind;
   }
 
-  public void setWind(Integer wind) {
+  public void setWind(int wind) {
     this.wind = wind;
   }
 }

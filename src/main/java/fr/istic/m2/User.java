@@ -1,8 +1,10 @@
 package fr.istic.m2;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class User {
 
   private int id;
@@ -13,8 +15,7 @@ public class User {
   public User() {
   }
 
-  public User(int id, String name, String password, String mail) {
-    this.id = id;
+  public User(String name, String password, String mail) {
     this.name = name;
     this.password = password;
     this.mail = mail;

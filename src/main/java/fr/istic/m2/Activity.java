@@ -3,13 +3,14 @@ package fr.istic.m2;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 public class Activity {
   private int id;
   private String name;
-  private Location location;
+  private List<Location> location;
 
   @Id
   @GeneratedValue
@@ -29,12 +30,12 @@ public class Activity {
     this.name = name;
   }
 
-  @ManyToOne
-  public Location getLocation() {
+  @OneToMany
+  public List<Location> getLocation() {
     return location;
   }
 
-  public void setLocation(Location location) {
+  public void setLocation(List<Location> location) {
     this.location = location;
   }
 }

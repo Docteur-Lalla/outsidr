@@ -11,6 +11,17 @@ public class Activity {
   private int id;
   private String name;
   private List<Location> location;
+  private List<Registration> registration;
+
+  public Activity() {
+
+  }
+
+  public Activity(String name, List<Location> location, List<Registration> registration) {
+    this.name = name;
+    this.location = location;
+    this.registration = registration;
+  }
 
   @Id
   @GeneratedValue
@@ -37,5 +48,14 @@ public class Activity {
 
   public void setLocation(List<Location> location) {
     this.location = location;
+  }
+
+  @OneToMany
+  public List<Registration> getRegistration() {
+    return registration;
+  }
+
+  public void setRegistration(List<Registration> registration) {
+    this.registration = registration;
   }
 }

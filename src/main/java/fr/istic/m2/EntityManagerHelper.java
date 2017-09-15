@@ -6,7 +6,6 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
 public class EntityManagerHelper {
-
   private static final EntityManagerFactory emf;
   private static final ThreadLocal<EntityManager> threadLocal;
 

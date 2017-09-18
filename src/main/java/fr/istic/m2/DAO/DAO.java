@@ -40,4 +40,9 @@ public abstract class DAO<T> {
      * @param obj the object T that have to be deleted
      */
     public abstract void delete(Object obj);
+
+    /**
+     * Method that allows to close the EntityManagerFactory
+     */
+    public abstract void close();
 }

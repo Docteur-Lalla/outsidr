@@ -1,7 +1,7 @@
-package fr.istic.m2.Factory;
+package fr.istic.m2.factory;
 
-import fr.istic.m2.DAO.DAO;
-import fr.istic.m2.DAO.UserDAO;
+import fr.istic.m2.dao.DAO;
+import fr.istic.m2.dao.UserDAO;
 import fr.istic.m2.entities.User;
 
 public class DAOFactory {

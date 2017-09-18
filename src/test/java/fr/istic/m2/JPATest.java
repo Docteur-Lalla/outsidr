@@ -1,5 +1,7 @@
 package fr.istic.m2;
 
+import fr.istic.m2.DAO.DAO;
+import fr.istic.m2.Factory.DAOFactory;
 import fr.istic.m2.entities.Registration;
 import fr.istic.m2.entities.User;
 
@@ -18,27 +20,11 @@ public class JPATest {
     public static void main(String[] args) {
         JPATest test = new JPATest(EntityManagerHelper.getEntityManager());
 
-        EntityManagerHelper.beginTransaction();
+        test.createUser();
+        test.updateUser();
+        test.deleteUser();
 
-        try {
-            test.createUser();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        test.listUser();
-
-        EntityManagerHelper.commit();
         EntityManagerHelper.closeEntityManagerFactory();
-    }
-
-    private void createUser() {
-        int numOfUser = manager.createQuery("Select a From User a", User.class).getResultList().size();
-        if (numOfUser == 0) {
-            List<Registration> regs = new ArrayList<Registration>();
-            manager.persist(new User("toto", "titi", "tata", regs));
-            manager.persist(new User("titi", "tata", "toto", regs));
-        }
     }
 
     private void listUser() {
@@ -46,4 +32,24 @@ public class JPATest {
         System.out.println("num of users:" + resultList.size());
     }
 
+    private void createUser() {
+        DAO<User> user = DAOFactory.getUserDAO();
+        user.create(new User("toto", "titi", "tata", new ArrayList<Registration>()));
+
+    }
+
+    private void updateUser() {
+        DAO<User> user = DAOFactory.getUserDAO();
+        user.update(new User("tot", "titi", "tata", new ArrayList<Registration>()), 3);
+    }
+
+    private void deleteUser(){
+        DAO<User> user = DAOFactory.getUserDAO();
+        try{
+            user.delete(user.findOne(12));
+        }catch(IllegalArgumentException e){
+            System.out.println("L'objet devant être supprimé n'est plus présent dans la base.");
+        }
+
+    }
 }

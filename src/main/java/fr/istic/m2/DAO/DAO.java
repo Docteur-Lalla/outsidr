@@ -16,7 +16,7 @@ public abstract class DAO<T> {
     public abstract List<T> findAll();
 
     /**
-     * Method that allows to find one of the object T in the databe
+     * Method that allows to find one of the object T in the database
      * @param id the id of the object T that have to be found
      * @return the object T
      */

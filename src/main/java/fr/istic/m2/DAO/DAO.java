@@ -16,7 +16,7 @@ public abstract class DAO<T> {
     public abstract List<T> findAll();
 
     /**
-     * Method that allows to find one of the object T in the databe
+     * Method that allows to find one of the object T in the database
      * @param id the id of the object T that have to be found
      * @return the object T
      */
@@ -40,4 +40,9 @@ public abstract class DAO<T> {
      * @param obj the object T that have to be deleted
      */
     public abstract void delete(Object obj);
+
+    /**
+     * Method that allows to close the EntityManagerFactory
+     */
+    public abstract void close();
 }

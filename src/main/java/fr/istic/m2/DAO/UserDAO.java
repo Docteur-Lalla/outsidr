@@ -25,7 +25,6 @@ public class UserDAO extends DAO {
         em.persist(obj);
 
         em.getTransaction().commit();
-        emf.close();
     }
 
     public void update(Object obj, int id) {
@@ -37,7 +36,6 @@ public class UserDAO extends DAO {
         query.executeUpdate();
 
         em.getTransaction().commit();
-        emf.close();
     }
 
     public void delete(Object obj) {
@@ -46,6 +44,9 @@ public class UserDAO extends DAO {
         em.remove(obj);
 
         em.getTransaction().commit();
+    }
+
+    public void close(){
         emf.close();
     }
 }

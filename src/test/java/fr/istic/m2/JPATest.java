@@ -23,6 +23,7 @@ public class JPATest {
         test.createUser();
         test.updateUser();
         test.deleteUser();
+        test.close();
 
         EntityManagerHelper.closeEntityManagerFactory();
     }
@@ -50,6 +51,10 @@ public class JPATest {
         }catch(IllegalArgumentException e){
             System.out.println("L'objet devant être supprimé n'est plus présent dans la base.");
         }
+    }
 
+    private void close(){
+        DAO<User> user = DAOFactory.getUserDAO();
+        user.close();
     }
 }

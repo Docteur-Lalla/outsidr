@@ -1,23 +1,22 @@
 package fr.istic.m2.dao;
 
-import fr.istic.m2.entities.User;
+import fr.istic.m2.entities.Meteo;
 
 import javax.persistence.Query;
 import java.util.List;
 
-public class UserDAO extends DAO {
+public class MeteoDAO extends DAO {
 
-    public UserDAO() {
+    public MeteoDAO(){}
+
+    @Override
+    public List<Meteo> findAll() {
+        return em.createQuery("Select a From Meteo a", Meteo.class).getResultList();
     }
 
     @Override
-    public List<User> findAll() {
-        return em.createQuery("Select a From User a", User.class).getResultList();
-    }
-
-    @Override
-    public User findOne(int id){
-        return em.find(User.class, id);
+    public Meteo findOne(int id){
+        return em.find(Meteo.class, id);
     }
 
     @Override
@@ -32,13 +31,13 @@ public class UserDAO extends DAO {
     @Override
     public void update(Object obj, int id) {
         em.getTransaction().begin();
-        User user = (User) obj;
+        Meteo meteo = (Meteo) obj;
 
-        Query query = em.createQuery("update User set name = :n, password = :p, mail = :m, registration = :r where id = 3");
-        query.setParameter("n", user.getName());
-        query.setParameter("p", user.getPassword());
-        query.setParameter("m", user.getMail());
-        query.setParameter("r", user.getRegistration());
+        Query query = em.createQuery("update Meteo set snowing = :s, temperature = :t, wave = :w, wind = :v where id = 3");
+        query.setParameter("s", meteo.isSnowing());
+        query.setParameter("t", meteo.getTemperature());
+        query.setParameter("w", meteo.getWave());
+        query.setParameter("v", meteo.getWind());
         query.executeUpdate();
 
         em.getTransaction().commit();

@@ -1,23 +1,22 @@
 package fr.istic.m2.dao;
 
-import fr.istic.m2.entities.User;
+import fr.istic.m2.entities.Location;
 
 import javax.persistence.Query;
 import java.util.List;
 
-public class UserDAO extends DAO {
+public class LocationDAO extends DAO{
 
-    public UserDAO() {
+    public LocationDAO(){}
+
+    @Override
+    public List<Location> findAll() {
+        return em.createQuery("Select a From Location a", Location.class).getResultList();
     }
 
     @Override
-    public List<User> findAll() {
-        return em.createQuery("Select a From User a", User.class).getResultList();
-    }
-
-    @Override
-    public User findOne(int id){
-        return em.find(User.class, id);
+    public Location findOne(int id){
+        return em.find(Location.class, id);
     }
 
     @Override
@@ -32,13 +31,13 @@ public class UserDAO extends DAO {
     @Override
     public void update(Object obj, int id) {
         em.getTransaction().begin();
-        User user = (User) obj;
+        Location loc = (Location) obj;
 
-        Query query = em.createQuery("update User set name = :n, password = :p, mail = :m, registration = :r where id = 3");
-        query.setParameter("n", user.getName());
-        query.setParameter("p", user.getPassword());
-        query.setParameter("m", user.getMail());
-        query.setParameter("r", user.getRegistration());
+        Query query = em.createQuery("update Location set name = :n, address = :d, activity = :a, meteo = :m where id = 3");
+        query.setParameter("n", loc.getName());
+        query.setParameter("d", loc.getAddress());
+        query.setParameter("a", loc.getActivity());
+        query.setParameter("m", loc.getMeteo());
         query.executeUpdate();
 
         em.getTransaction().commit();

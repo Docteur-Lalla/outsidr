@@ -1,4 +1,4 @@
-package fr.istic.m2.DAO;
+package fr.istic.m2.dao;
 
 import fr.istic.m2.entities.User;
 
@@ -15,10 +15,12 @@ public class UserDAO extends DAO {
         return em.createQuery("Select a From User a", User.class).getResultList();
     }
 
+    @Override
     public User findOne(int id){
         return em.find(User.class, id);
     }
 
+    @Override
     public void create(Object obj) {
         em.getTransaction().begin();
 
@@ -27,17 +29,22 @@ public class UserDAO extends DAO {
         em.getTransaction().commit();
     }
 
+    @Override
     public void update(Object obj, int id) {
         em.getTransaction().begin();
         User user = (User) obj;
 
-        Query query = em.createQuery("update User set name = :d where id = 3");
-        query.setParameter("d", user.getName());
+        Query query = em.createQuery("update User set name = :n, password = :p, mail = :m, registration = :r where id = 3");
+        query.setParameter("n", user.getName());
+        query.setParameter("p", user.getPassword());
+        query.setParameter("m", user.getMail());
+        query.setParameter("r", user.getRegistration());
         query.executeUpdate();
 
         em.getTransaction().commit();
     }
 
+    @Override
     public void delete(Object obj) {
         em.getTransaction().begin();
 
@@ -46,6 +53,7 @@ public class UserDAO extends DAO {
         em.getTransaction().commit();
     }
 
+    @Override
     public void close(){
         emf.close();
     }

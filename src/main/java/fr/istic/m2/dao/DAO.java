@@ -1,4 +1,4 @@
-package fr.istic.m2.DAO;
+package fr.istic.m2.dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

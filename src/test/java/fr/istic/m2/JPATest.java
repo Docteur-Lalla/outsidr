@@ -24,8 +24,6 @@ public class JPATest {
         test.updateUser();
         test.deleteUser();
         test.close();
-
-        EntityManagerHelper.closeEntityManagerFactory();
     }
 
     private void listUser() {

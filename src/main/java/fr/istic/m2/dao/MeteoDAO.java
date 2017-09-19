@@ -7,7 +7,8 @@ import java.util.List;
 
 public class MeteoDAO extends DAO {
 
-    public MeteoDAO(){}
+    public MeteoDAO() {
+    }
 
     @Override
     public List<Meteo> findAll() {
@@ -15,7 +16,7 @@ public class MeteoDAO extends DAO {
     }
 
     @Override
-    public Meteo findOne(int id){
+    public Meteo findOne(int id) {
         return em.find(Meteo.class, id);
     }
 
@@ -52,8 +53,4 @@ public class MeteoDAO extends DAO {
         em.getTransaction().commit();
     }
 
-    @Override
-    public void close(){
-        emf.close();
-    }
 }

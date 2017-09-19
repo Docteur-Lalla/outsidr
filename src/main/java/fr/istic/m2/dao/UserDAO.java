@@ -17,7 +17,7 @@ public class UserDAO extends DAO {
     }
 
     @Override
-    public User findOne(int id){
+    public User findOne(int id) {
         return em.find(User.class, id);
     }
 
@@ -35,13 +35,14 @@ public class UserDAO extends DAO {
         em.getTransaction().begin();
         User user = (User) obj;
 
-        if(user.getRegistration() == null || user.getRegistration().isEmpty()){
+
+        if (user.getRegistration() == null || user.getRegistration().isEmpty()) {
             Query query = em.createQuery("update User set name = :n, password = :p, mail = :m where id = 3");
             query.setParameter("n", user.getName());
             query.setParameter("p", user.getPassword());
             query.setParameter("m", user.getMail());
             query.executeUpdate();
-        }else {
+        } else {
             Query query = em.createQuery("update User set name = :n, password = :p, mail = :m, registration = :r where id = 3");
             query.setParameter("n", user.getName());
             query.setParameter("p", user.getPassword());
@@ -62,8 +63,4 @@ public class UserDAO extends DAO {
         em.getTransaction().commit();
     }
 
-    @Override
-    public void close(){
-        emf.close();
-    }
 }

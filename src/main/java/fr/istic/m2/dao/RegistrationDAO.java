@@ -5,9 +5,10 @@ import fr.istic.m2.entities.Registration;
 import javax.persistence.Query;
 import java.util.List;
 
-public class RegistrationDAO extends DAO{
+public class RegistrationDAO extends DAO {
 
-    public RegistrationDAO(){}
+    public RegistrationDAO() {
+    }
 
     @Override
     public List<Registration> findAll() {
@@ -15,7 +16,7 @@ public class RegistrationDAO extends DAO{
     }
 
     @Override
-    public Registration findOne(int id){
+    public Registration findOne(int id) {
         return em.find(Registration.class, id);
     }
 
@@ -29,7 +30,8 @@ public class RegistrationDAO extends DAO{
     }
 
     @Override
-    public void update(Object obj, int id) {}
+    public void update(Object obj, int id) {
+    }
 
     @Override
     public void delete(Object obj) {
@@ -40,8 +42,4 @@ public class RegistrationDAO extends DAO{
         em.getTransaction().commit();
     }
 
-    @Override
-    public void close(){
-        emf.close();
-    }
 }

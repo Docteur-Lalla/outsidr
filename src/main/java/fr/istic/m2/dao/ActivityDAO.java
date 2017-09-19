@@ -7,7 +7,8 @@ import java.util.List;
 
 public class ActivityDAO extends DAO {
 
-    public ActivityDAO(){}
+    public ActivityDAO() {
+    }
 
     @Override
     public List<Activity> findAll() {
@@ -15,7 +16,7 @@ public class ActivityDAO extends DAO {
     }
 
     @Override
-    public Activity findOne(int id){
+    public Activity findOne(int id) {
         return em.find(Activity.class, id);
     }
 
@@ -51,8 +52,4 @@ public class ActivityDAO extends DAO {
         em.getTransaction().commit();
     }
 
-    @Override
-    public void close(){
-        emf.close();
-    }
 }

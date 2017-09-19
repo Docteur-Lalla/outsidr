@@ -5,9 +5,10 @@ import fr.istic.m2.entities.Location;
 import javax.persistence.Query;
 import java.util.List;
 
-public class LocationDAO extends DAO{
+public class LocationDAO extends DAO {
 
-    public LocationDAO(){}
+    public LocationDAO() {
+    }
 
     @Override
     public List<Location> findAll() {
@@ -15,7 +16,7 @@ public class LocationDAO extends DAO{
     }
 
     @Override
-    public Location findOne(int id){
+    public Location findOne(int id) {
         return em.find(Location.class, id);
     }
 
@@ -52,8 +53,4 @@ public class LocationDAO extends DAO{
         em.getTransaction().commit();
     }
 
-    @Override
-    public void close(){
-        emf.close();
-    }
 }

@@ -10,6 +10,10 @@ public class MainApplication extends Application {
     final Set<Class<?>> classes = new HashSet<Class<?>>();
 
     classes.add(MeteoEndpoint.class);
+    classes.add(ActivityEndPoint.class);
+    classes.add(LocationEndPoint.class);
+    classes.add(RegistrationEndPoint.class);
+    classes.add(UserEndPoint.class);
     return classes;
   }
 }

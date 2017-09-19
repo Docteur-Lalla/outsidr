@@ -23,6 +23,8 @@ public class JPATest {
         test.createUser();
         test.updateUser();
         test.deleteUser();
+        test.findAllUser();
+        test.finOneUser();
         test.close();
     }
 
@@ -49,6 +51,22 @@ public class JPATest {
         }catch(IllegalArgumentException e){
             System.out.println("L'objet devant être supprimé n'est plus présent dans la base.");
         }
+    }
+
+    private void findAllUser(){
+        DAO<User> user = DAOFactory.getUserDAO();
+        List<User> list = user.findAll();
+
+        for (User u : list) {
+            System.out.println("FindAll : " + u.getName());
+        }
+    }
+
+    private void finOneUser(){
+        DAO<User> user = DAOFactory.getUserDAO();
+        User u = user.findOne(3);
+
+        System.out.println("FindOne : " + u.getName());
     }
 
     private void close(){

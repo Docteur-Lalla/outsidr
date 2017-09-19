@@ -19,7 +19,7 @@ public class EntityManagerHelper {
       tempEntityManager = Persistence.createEntityManagerFactory("devMySQL");
     }
 
-      //tempEntityManager = Persistence.createEntityManagerFactory("mysqlISTIC");
+    //tempEntityManager = Persistence.createEntityManagerFactory("mysqlISTIC");
 
     emf = tempEntityManager;
     threadLocal = new ThreadLocal<EntityManager>();

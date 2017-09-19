@@ -1,13 +1,14 @@
 package fr.istic.m2.dao;
 
+import fr.istic.m2.EntityManagerHelper;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.List;
 
 public abstract class DAO<T> {
-    protected EntityManagerFactory emf = Persistence.createEntityManagerFactory("devMySQL");
-    protected EntityManager em = emf.createEntityManager();
+    protected EntityManager em = EntityManagerHelper.getEntityManager();
 
     /**
      * Method that allows to find all the object T in the database
@@ -44,5 +45,7 @@ public abstract class DAO<T> {
     /**
      * Method that allows to close the EntityManagerFactory
      */
-    public abstract void close();
+    public void close() {
+        EntityManagerHelper.closeEntityManagerFactory();
+    }
 }

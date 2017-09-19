@@ -1,5 +1,6 @@
 package fr.istic.m2.dao;
 
+import fr.istic.m2.entities.Registration;
 import fr.istic.m2.entities.User;
 
 import javax.persistence.Query;
@@ -34,12 +35,20 @@ public class UserDAO extends DAO {
         em.getTransaction().begin();
         User user = (User) obj;
 
-        Query query = em.createQuery("update User set name = :n, password = :p, mail = :m, registration = :r where id = 3");
-        query.setParameter("n", user.getName());
-        query.setParameter("p", user.getPassword());
-        query.setParameter("m", user.getMail());
-        query.setParameter("r", user.getRegistration());
-        query.executeUpdate();
+        if(user.getRegistration() == null || user.getRegistration().isEmpty()){
+            Query query = em.createQuery("update User set name = :n, password = :p, mail = :m where id = 3");
+            query.setParameter("n", user.getName());
+            query.setParameter("p", user.getPassword());
+            query.setParameter("m", user.getMail());
+            query.executeUpdate();
+        }else {
+            Query query = em.createQuery("update User set name = :n, password = :p, mail = :m, registration = :r where id = 3");
+            query.setParameter("n", user.getName());
+            query.setParameter("p", user.getPassword());
+            query.setParameter("m", user.getMail());
+            query.setParameter("r", user.getRegistration());
+            query.executeUpdate();
+        }
 
         em.getTransaction().commit();
     }

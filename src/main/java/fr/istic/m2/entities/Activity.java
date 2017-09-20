@@ -73,7 +73,7 @@ public class Activity {
    * Getter of the list of locations where the activity takes place.
    * @return the list of locations
    */
-  @OneToMany
+  @OneToMany(mappedBy="activity")
   public List<Location> getLocation() {
     return location;
   }
@@ -90,7 +90,7 @@ public class Activity {
    * Getter of the list of registrations in which the activity occurs.
    * @return the list of registrations
    */
-  @OneToMany
+  @OneToMany(mappedBy="activity")
   public List<Registration> getRegistration() {
     return registration;
   }

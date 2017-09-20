@@ -109,7 +109,7 @@ public class User {
    * Getter of the registration list.
    * @return the user's registration list in the database
    */
-  @OneToMany
+  @OneToMany(mappedBy="user")
   public List<Registration> getRegistration() {
     return registration;
   }

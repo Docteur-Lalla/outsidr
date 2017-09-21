@@ -1,11 +1,13 @@
 package fr.istic.m2;
 
 import fr.istic.m2.dao.DAO;
+import fr.istic.m2.entities.Activity;
 import fr.istic.m2.factory.DAOFactory;
 import fr.istic.m2.entities.Registration;
 import fr.istic.m2.entities.User;
 
 import javax.persistence.EntityManager;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class JPATest {
         test.deleteUser();
         test.findAllUser();
         test.finOneUser();
+        test.findOneActivity();
         test.close();
     }
 
@@ -67,6 +70,13 @@ public class JPATest {
         User u = user.findOne(3);
 
         System.out.println("FindOne : " + u.getName());
+    }
+
+    private void findOneActivity(){
+        DAO<Activity> act = DAOFactory.getActivityDAO();
+        Activity a = act.findOne(1);
+
+        System.out.println("FindOne : " + a.getName());
     }
 
     private void close(){

@@ -13,4 +13,6 @@ public interface RegistrationRepository extends JpaRepository<Registration, Inte
     Registration findOne(Integer id);
 
     Registration save(Registration loc);
+
+    void delete(Integer id);
 }

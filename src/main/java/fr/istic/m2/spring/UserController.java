@@ -63,4 +63,14 @@ public class UserController {
             return new ResponseEntity<User>(user, HttpStatus.BAD_REQUEST);
         }
     }
+
+    /**
+     * Route used to delete a user entity in the database via a GET request.
+     *
+     * @param id the user id
+     */
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET, produces = "application/json")
+    public void deleteUser(@PathVariable int id) {
+        this.userRepository.delete(id);
+    }
 }

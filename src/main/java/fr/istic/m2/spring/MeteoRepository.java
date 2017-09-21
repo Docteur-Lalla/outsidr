@@ -13,4 +13,6 @@ public interface MeteoRepository extends JpaRepository<Meteo, Integer> {
   Meteo findOne(Integer id);
 
   Meteo save(Meteo meteo);
+
+  void delete(Integer id);
 }

@@ -64,4 +64,14 @@ public class ActivityController {
             return new ResponseEntity<Activity>(activity, HttpStatus.BAD_REQUEST);
         }
     }
+
+    /**
+     * Route used to delete an activity entity in the database via a GET request.
+     *
+     * @param id the activity id
+     */
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET, produces = "application/json")
+    public void deleteActivity(@PathVariable int id) {
+        this.activityRepository.delete(id);
+    }
 }

@@ -63,4 +63,14 @@ public class LocationController {
             return new ResponseEntity<Location>(location, HttpStatus.BAD_REQUEST);
         }
     }
+
+    /**
+     * Route used to delete a location entity in the database via a GET request.
+     *
+     * @param id the location id
+     */
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET, produces = "application/json")
+    public void deleteLocation(@PathVariable int id) {
+        this.locationRepository.delete(id);
+    }
 }

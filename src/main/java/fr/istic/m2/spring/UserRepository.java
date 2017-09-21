@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, Integer>{
     User findOne(Integer id);
 
     User save(User loc);
+
+    void delete(Integer id);
 }

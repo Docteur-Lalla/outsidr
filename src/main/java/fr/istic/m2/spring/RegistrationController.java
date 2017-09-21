@@ -63,4 +63,14 @@ public class RegistrationController {
             return new ResponseEntity<Registration>(registration, HttpStatus.BAD_REQUEST);
         }
     }
+
+    /**
+     * Route used to delete a registration entity in the database via a GET request.
+     *
+     * @param id the registration id
+     */
+    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET, produces = "application/json")
+    public void deleteRegistration(@PathVariable int id) {
+        this.registrationRepository.delete(id);
+    }
 }

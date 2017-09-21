@@ -63,4 +63,14 @@ public class MeteoController {
       return new ResponseEntity<Meteo>(meteo, HttpStatus.BAD_REQUEST);
     }
   }
+
+  /**
+   * Route used to delete a meteo entity in the database via a GET request.
+   *
+   * @param id the meteo id
+   */
+  @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET, produces = "application/json")
+  public void deleteMeteo(@PathVariable int id) {
+    this.meteoRepository.delete(id);
+  }
 }

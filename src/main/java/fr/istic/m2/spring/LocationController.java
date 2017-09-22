@@ -49,13 +49,13 @@ public class LocationController {
     }
 
     /**
-     * Route used to create a new location entity in the database via a POST request.
+     * Route used to create or update a location entity in the database via a POST request.
      *
      * @param location the location entity in JSON format
      * @return a HTTP 200 response if the given location entity is valid, HTTP 400 otherwise
      */
-    @RequestMapping(value = "/new", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<Location> createNewLocation(@RequestBody Location location) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<Location> saveNewLocation(@RequestBody Location location) {
         if (location != null) {
             this.locationRepository.save(location);
             return new ResponseEntity<Location>(location, HttpStatus.OK);

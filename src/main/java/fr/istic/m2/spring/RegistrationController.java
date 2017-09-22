@@ -49,13 +49,13 @@ public class RegistrationController {
     }
 
     /**
-     * Route used to create a new registration entity in the database via a POST request.
+     * Route used to create or update a registration entity in the database via a POST request.
      *
      * @param registration the registration entity in JSON format
      * @return a HTTP 200 response if the given registration entity is valid, HTTP 400 otherwise
      */
-    @RequestMapping(value = "/new", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<Registration> createNewRegistration(@RequestBody Registration registration) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<Registration> saveNewRegistration(@RequestBody Registration registration) {
         if (registration != null) {
             this.registrationRepository.save(registration);
             return new ResponseEntity<Registration>(registration, HttpStatus.OK);

@@ -50,13 +50,13 @@ public class ActivityController {
     }
 
     /**
-     * Route used to create a new activity entity in the database via a POST request.
+     * Route used to create or update a activity entity in the database via a POST request.
      *
      * @param activity the activity entity in JSON format
      * @return a HTTP 200 response if the given activity entity is valid, HTTP 400 otherwise
      */
-    @RequestMapping(value = "/new", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<Activity> createNewActivity(@RequestBody Activity activity) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<Activity> saveNewActivity(@RequestBody Activity activity) {
         if (activity != null) {
             this.activityRepository.save(activity);
             return new ResponseEntity<Activity>(activity, HttpStatus.OK);

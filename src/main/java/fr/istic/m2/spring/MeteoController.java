@@ -54,13 +54,13 @@ public class MeteoController {
   }
 
   /**
-   * Route used to create a new meteo entity in the database via a POST request.
+   * Route used to create update a meteo entity in the database via a POST request.
    *
    * @param meteo the meteo entity in JSON format
    * @return a HTTP 200 response if the given meteo entity is valid, HTTP 400 otherwise
    */
-  @RequestMapping(value = "/new", method = RequestMethod.POST, consumes = "application/json")
-  public ResponseEntity<Meteo> createNewMeteo(@RequestBody Meteo meteo) {
+  @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
+  public ResponseEntity<Meteo> saveNewMeteo(@RequestBody Meteo meteo) {
     if (meteo != null) {
       this.meteoRepository.save(meteo);
       return new ResponseEntity<Meteo>(meteo, HttpStatus.OK);

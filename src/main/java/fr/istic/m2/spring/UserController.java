@@ -49,13 +49,13 @@ public class UserController {
     }
 
     /**
-     * Route used to create a new user entity in the database via a POST request.
+     * Route used to create or update a user entity in the database via a POST request.
      *
      * @param user the user entity in JSON format
      * @return a HTTP 200 response if the given user entity is valid, HTTP 400 otherwise
      */
-    @RequestMapping(value = "/new", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<User> createNewUser(@RequestBody User user) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
+    public ResponseEntity<User> saveNewUser(@RequestBody User user) {
         if (user != null) {
             this.userRepository.save(user);
             return new ResponseEntity<User>(user, HttpStatus.OK);

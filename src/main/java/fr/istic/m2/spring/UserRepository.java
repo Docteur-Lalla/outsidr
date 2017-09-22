@@ -15,4 +15,5 @@ public interface UserRepository extends JpaRepository<User, Integer>{
     User save(User loc);
 
     void delete(Integer id);
+
 }

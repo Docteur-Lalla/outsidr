@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -40,6 +41,7 @@ public class Activity {
    * @return the ID of the activity
    */
   @Id
+  @NotNull
   @GeneratedValue
   public int getId() {
     return id;
@@ -57,6 +59,7 @@ public class Activity {
    * Getter of the name.
    * @return the name of the activity
    */
+  @NotNull
   public String getName() {
     return name;
   }

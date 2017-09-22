@@ -1,6 +1,7 @@
 package fr.istic.m2.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -133,6 +134,7 @@ public class Registration {
    * Getter of the skill level.
    * @return the skill level the user wishes to practice at
    */
+  @NotNull
   public String getLevel() {
     return level;
   }

@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  * Class representing locations where the activities can take place in the database.
@@ -44,6 +45,7 @@ public class Location {
    * @return the ID of the location in the database
    */
   @Id
+  @NotNull
   @GeneratedValue
   public int getId() {
     return id;
@@ -61,6 +63,7 @@ public class Location {
    * Getter of the name.
    * @return the name given to the location
    */
+  @NotNull
   public String getName() {
     return name;
   }
@@ -77,6 +80,7 @@ public class Location {
    * Getter of the address.
    * @return the address
    */
+  @NotNull
   public String getAddress() {
     return address;
   }
@@ -111,6 +115,7 @@ public class Location {
    * @return the meteo expected the next week-end
    */
   @OneToOne
+  @NotNull
   public Meteo getMeteo() {
     return meteo;
   }

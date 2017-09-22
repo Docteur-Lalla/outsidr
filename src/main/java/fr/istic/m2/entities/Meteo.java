@@ -3,6 +3,7 @@ package fr.istic.m2.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * Entity representing the meteo of a given location for the next week-end.
@@ -42,6 +43,7 @@ public class Meteo {
    * @return the ID of the meteo entity in the database
    */
   @Id
+  @NotNull
   @GeneratedValue
   public int getId() {
     return id;
@@ -59,6 +61,7 @@ public class Meteo {
    * Getter of the snowing attribute.
    * @return the snowing attribute of the meteo entity
    */
+  @NotNull
   public boolean isSnowing() {
     return snowing;
   }
@@ -75,6 +78,7 @@ public class Meteo {
    * Getter of the temperature.
    * @return the temperature of the meteo entity in the database
    */
+  @NotNull
   public int getTemperature() {
     return temperature;
   }
@@ -91,6 +95,7 @@ public class Meteo {
    * Getter of the wave height.
    * @return the wave height of the meteo entity in the database
    */
+  @NotNull
   public int getWave() {
     return wave;
   }
@@ -107,6 +112,7 @@ public class Meteo {
    * Getter of the wind speed.
    * @return the wind speed of the meteo entity in the database
    */
+  @NotNull
   public int getWind() {
     return wind;
   }

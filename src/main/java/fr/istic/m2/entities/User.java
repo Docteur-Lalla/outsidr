@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -44,6 +45,7 @@ public class User {
    * @return the user's ID in the database
    */
   @Id
+  @NotNull
   @GeneratedValue
   public int getId() {
     return this.id;
@@ -61,6 +63,7 @@ public class User {
    * Getter of the username.
    * @return the username
    */
+  @NotNull
   public String getName() {
     return this.name;
   }
@@ -77,6 +80,7 @@ public class User {
    * Getter of the password.
    * @return the user's password
    */
+  @NotNull
   public String getPassword() {
     return this.password;
   }
@@ -93,6 +97,7 @@ public class User {
    * Getter of the mail address.
    * @return the user's mail address
    */
+  @NotNull
   public String getMail() {
     return this.mail;
   }

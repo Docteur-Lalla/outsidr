@@ -22,11 +22,9 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <transformers>
-                <transformer>
-                  <mainClass>fr.istic.m2.jaxrs.RestServer</mainClass>
-                </transformer>
-              </transformers>
+              <transformer>
+                <mainClass>fr.istic.m2.spring.Application</mainClass>
+              </transformer>
               <filters>
                 <filter>
                   <artifact>*:*</artifact>
@@ -44,6 +42,17 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
         <version>1.4.0.RELEASE</version>
+        <configuration>
+          <mainClass>fr.istic.m2.spring.Application</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.spotify</groupId>
+        <artifactId>dockerfile-maven-plugin</artifactId>
+        <version>1.3.4</version>
+        <configuration>
+          <repository>${docker.image.prefix}/${project.artifactId}</repository>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -83,6 +92,7 @@
     </plugins>
   </reporting>
   <properties>
+    <docker.image.prefix>springio</docker.image.prefix>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>

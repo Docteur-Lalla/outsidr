@@ -14,6 +14,7 @@ import java.util.List;
  * @see Activity
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/activity")
 public class ActivityController {
     private final ActivityRepository activityRepository;

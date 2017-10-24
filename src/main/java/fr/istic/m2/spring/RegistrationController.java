@@ -13,6 +13,7 @@ import java.util.List;
  * @see Registration
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/registration")
 public class RegistrationController {
     private final RegistrationRepository registrationRepository;

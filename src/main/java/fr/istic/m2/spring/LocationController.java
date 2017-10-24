@@ -13,6 +13,7 @@ import java.util.List;
  * @see Location
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/location")
 public class LocationController {
     private final LocationRepository locationRepository;

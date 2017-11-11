@@ -1,5 +1,7 @@
 package fr.istic.m2.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -98,6 +100,7 @@ public class Location {
    * @return the activity associated with the location
    */
   @ManyToOne
+  @JsonManagedReference
   public Activity getActivity() {
     return activity;
   }

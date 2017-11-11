@@ -1,5 +1,7 @@
 package fr.istic.m2.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -77,6 +79,7 @@ public class Activity {
    * @return the list of locations
    */
   @OneToMany(mappedBy="activity")
+  @JsonBackReference
   public List<Location> getLocation() {
     return location;
   }
@@ -94,6 +97,7 @@ public class Activity {
    * @return the list of registrations
    */
   @OneToMany(mappedBy="activity")
+  @JsonBackReference
   public List<Registration> getRegistration() {
     return registration;
   }

@@ -13,6 +13,7 @@ import java.util.List;
  * @see User
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/user")
 public class UserController {
     private final UserRepository userRepository;

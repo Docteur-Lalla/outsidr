@@ -1,6 +1,8 @@
 package fr.istic.m2.spring;
 
+import fr.istic.m2.entities.Activity;
 import fr.istic.m2.entities.Registration;
+import fr.istic.m2.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +15,13 @@ import java.util.List;
  * @see Registration
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/registration")
 public class RegistrationController {
     private final RegistrationRepository registrationRepository;
+    private final UserRepository userRepository;
+    private final ActivityRepository activityRepository;
+
 
     /**
      * Constructor setting the registration repository.
@@ -23,8 +29,12 @@ public class RegistrationController {
      * @param registrationRepository the registration repository used to send requests to the database
      */
     @Autowired
-    RegistrationController(RegistrationRepository registrationRepository) {
+    RegistrationController(RegistrationRepository registrationRepository,
+                           UserRepository userRepository,
+                           ActivityRepository activityRepository) {
         this.registrationRepository = registrationRepository;
+        this.userRepository = userRepository;
+        this.activityRepository = activityRepository;
     }
 
     /**
@@ -46,6 +56,28 @@ public class RegistrationController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public Registration getRegistrationById(@PathVariable int id) {
         return this.registrationRepository.findOne(id);
+    }
+
+    /**
+     * Route used to get a Registration entity in JSON format identified by its user.
+     * @param id the registration entity's user ID
+     * @return the registration entity in JSON format
+     */
+    @RequestMapping(value = "/user={id}", method = RequestMethod.GET, produces = "application/json")
+    public Registration getRegistrationByUser(@PathVariable int id) {
+        User user = this.userRepository.findOne(id);
+        return this.registrationRepository.findByUser(user);
+    }
+
+    /**
+     * Route used to get a Registration entity in JSON format identified by its activity.
+     * @param id the registration entity's activity ID
+     * @return the registration entity in JSON format
+     */
+    @RequestMapping(value = "/activity={id}", method = RequestMethod.GET, produces = "application/json")
+    public Registration getRegistrationByActivity(@PathVariable int id) {
+        Activity activity = this.activityRepository.findOne(id);
+        return this.registrationRepository.findByActivity(activity);
     }
 
     /**

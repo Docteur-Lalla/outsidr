@@ -1,5 +1,7 @@
 package fr.istic.m2.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -74,6 +76,7 @@ public class Activity {
    * @return the meteo
    */
   @ManyToOne
+  @JsonBackReference
   public Meteo getMeteo() {
     return meteo;
   }
@@ -91,6 +94,7 @@ public class Activity {
    * @return the list of registrations
    */
   @OneToMany(mappedBy="activity")
+  @JsonBackReference
   public List<Registration> getRegistration() {
     return registration;
   }

@@ -1,5 +1,7 @@
 package fr.istic.m2.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -118,6 +120,7 @@ public class Registration {
    */
   @ManyToOne
   @Id
+  @JsonManagedReference
   public Activity getActivity() {
     return activity;
   }

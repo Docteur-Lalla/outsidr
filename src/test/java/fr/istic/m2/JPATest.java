@@ -5,9 +5,14 @@ import fr.istic.m2.entities.Activity;
 import fr.istic.m2.factory.DAOFactory;
 import fr.istic.m2.entities.Registration;
 import fr.istic.m2.entities.User;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.map.type.TypeFactory;
 
 import javax.persistence.EntityManager;
 import javax.swing.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,16 +24,25 @@ public class JPATest {
         this.manager = manager;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         JPATest test = new JPATest(EntityManagerHelper.getEntityManager());
 
-        test.createUser();
-        test.updateUser();
-        test.deleteUser();
-        test.findAllUser();
-        test.finOneUser();
-        test.findOneActivity();
-        test.close();
+        //ObjectMapper map = new ObjectMapper();
+
+        //byte[] json = Files.readAllBytes(Paths.get("C:\\Users\\jmahe\\Desktop\\User.txt"));
+
+        //List<User> user = map.readValue(json, TypeFactory.defaultInstance().constructCollectionType(List.class, User.class));
+
+        //for (User u : user) {
+          //  test.createUser(u);
+        //}
+        //test.createUser();
+        //test.updateUser();
+        //test.deleteUser();
+        //test.findAllUser();
+        //test.finOneUser();
+        //test.findOneActivity();
+        //test.close();
     }
 
     private void listUser() {
@@ -36,9 +50,9 @@ public class JPATest {
         System.out.println("num of users:" + resultList.size());
     }
 
-    private void createUser() {
+    private void createUser(User u) {
         DAO<User> user = DAOFactory.getUserDAO();
-        user.create(new User("toto", "titi", "tata", new ArrayList<Registration>()));
+        user.create(u);
 
     }
 

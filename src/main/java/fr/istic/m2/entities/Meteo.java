@@ -3,11 +3,13 @@ package fr.istic.m2.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
- * Entity representing the meteo of a given location for the next week-end.
- * @see Location
+ * Entity representing the meteo of activities for the next week-end.
+ * @see Activity
  */
 @Entity
 public class Meteo {
@@ -16,6 +18,7 @@ public class Meteo {
   private int temperature;
   private int wave;
   private int wind;
+  private List<Activity> activity;
 
   /**
    * Default constructor
@@ -123,5 +126,22 @@ public class Meteo {
    */
   public void setWind(int wind) {
     this.wind = wind;
+  }
+
+  /**
+   * Getter of the activity
+   * @return the activity
+   */
+  @OneToMany(mappedBy = "meteo")
+  public List<Activity> getActivity() {
+    return activity;
+  }
+
+  /**
+   * Setter of the activity
+   * @param activity the activity to link
+   */
+  public void setActivity(List<Activity> activity) {
+    this.activity = activity;
   }
 }

@@ -1,9 +1,6 @@
 package fr.istic.m2.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -14,7 +11,7 @@ import java.util.List;
 public class Activity {
   private int id;
   private String name;
-  private List<Location> location;
+  private Meteo meteo;
   private List<Registration> registration;
 
   /**
@@ -27,12 +24,12 @@ public class Activity {
   /**
    * Constructor with a parameter for each field of the class.
    * @param name the activity name
-   * @param location the list of locations where the activity takes place
+   * @param meteo the list of meteo where the activity takes place
    * @param registration the list of registrations in which this activity occurs
    */
-  public Activity(String name, List<Location> location, List<Registration> registration) {
+  public Activity(String name, Meteo meteo, List<Registration> registration) {
     this.name = name;
-    this.location = location;
+    this.meteo = meteo;
     this.registration = registration;
   }
 
@@ -73,20 +70,20 @@ public class Activity {
   }
 
   /**
-   * Getter of the list of locations where the activity takes place.
-   * @return the list of locations
+   * Getter of the meteo where the activity takes place.
+   * @return the meteo
    */
-  @OneToMany(mappedBy="activity")
-  public List<Location> getLocation() {
-    return location;
+  @ManyToOne
+  public Meteo getMeteo() {
+    return meteo;
   }
 
   /**
-   * Setter of the list of locations where the activity takes place.
-   * @param location the list of locations
+   * Setter of the meteo where the activity takes place.
+   * @param meteo the meteo
    */
-  public void setLocation(List<Location> location) {
-    this.location = location;
+  public void setMeteo(Meteo meteo) {
+    this.meteo = meteo;
   }
 
   /**

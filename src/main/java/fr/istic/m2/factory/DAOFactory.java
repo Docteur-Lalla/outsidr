@@ -6,7 +6,6 @@ import fr.istic.m2.entities.*;
 public class DAOFactory {
   private static UserDAO userDAO;
   private static ActivityDAO activityDAO;
-  private static LocationDAO locationDAO;
   private static MeteoDAO meteoDAO;
   private static RegistrationDAO registrationDAO;
 
@@ -22,13 +21,6 @@ public class DAOFactory {
       return activityDAO = new ActivityDAO();
     }
     return userDAO;
-  }
-
-  public static DAO<Location> getLocatonDAO() {
-    if (locationDAO == null) {
-      return locationDAO = new LocationDAO();
-    }
-    return activityDAO;
   }
 
   public static DAO<Meteo> getMeteoDAO() {

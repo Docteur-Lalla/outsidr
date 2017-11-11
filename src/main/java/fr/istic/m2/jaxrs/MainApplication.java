@@ -11,7 +11,6 @@ public class MainApplication extends Application {
 
     classes.add(MeteoEndpoint.class);
     classes.add(ActivityEndPoint.class);
-    classes.add(LocationEndPoint.class);
     classes.add(RegistrationEndPoint.class);
     classes.add(UserEndPoint.class);
     return classes;

@@ -13,7 +13,7 @@ import java.util.List;
 public class Activity {
   private int id;
   private String name;
-  private Meteo meteo;
+  private City city;
   private List<Registration> registration;
 
   /**
@@ -26,13 +26,12 @@ public class Activity {
   /**
    * Constructor with a parameter for each field of the class.
    * @param name the activity name
-   * @param meteo the list of meteo where the activity takes place
    * @param registration the list of registrations in which this activity occurs
    */
-  public Activity(String name, Meteo meteo, List<Registration> registration) {
+  public Activity(String name, List<Registration> registration, City city) {
     this.name = name;
-    this.meteo = meteo;
     this.registration = registration;
+    this.city = city;
   }
 
   /**
@@ -72,24 +71,6 @@ public class Activity {
   }
 
   /**
-   * Getter of the meteo where the activity takes place.
-   * @return the meteo
-   */
-  @ManyToOne
-  @JsonBackReference
-  public Meteo getMeteo() {
-    return meteo;
-  }
-
-  /**
-   * Setter of the meteo where the activity takes place.
-   * @param meteo the meteo
-   */
-  public void setMeteo(Meteo meteo) {
-    this.meteo = meteo;
-  }
-
-  /**
    * Getter of the list of registrations in which the activity occurs.
    * @return the list of registrations
    */
@@ -105,5 +86,14 @@ public class Activity {
    */
   public void setRegistration(List<Registration> registration) {
     this.registration = registration;
+  }
+
+  @ManyToOne
+  public City getCity() {
+    return city;
+  }
+
+  public void setCity(City city) {
+    this.city = city;
   }
 }

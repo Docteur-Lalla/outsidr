@@ -34,9 +34,9 @@ public class ActivityDAO extends DAO {
         em.getTransaction().begin();
         Activity act = (Activity) obj;
 
-        Query query = em.createQuery("update Activity set name = :n, meteo = :l, registration = :r where id = 3");
+        Query query = em.createQuery("update Activity set name = :n, city = :l, registration = :r where id = 3");
         query.setParameter("n", act.getName());
-        query.setParameter("l", act.getMeteo());
+        query.setParameter("l", act.getCity());
         query.setParameter("r", act.getRegistration());
         query.executeUpdate();
 

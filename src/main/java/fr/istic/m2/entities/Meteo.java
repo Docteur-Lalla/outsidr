@@ -1,26 +1,27 @@
 package fr.istic.m2.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 /**
  * Entity representing the meteo of activities for the next week-end.
  * @see Activity
  */
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Meteo {
+
+  @JsonIgnore
   private int id;
   private boolean snowing;
   private int temperature;
   private int wave;
   private int wind;
-  private List<Activity> activity;
+  private City city;
 
   /**
    * Default constructor
@@ -35,7 +36,7 @@ public class Meteo {
    * @param temperature the temperature in degree celsius
    * @param wave the height of the waves in meters
    * @param wind the speed of the wind in Beaufort
-   */
+  */
   public Meteo(boolean snowing, int temperature, int wave, int wind) {
     this.snowing = snowing;
     this.temperature = temperature;
@@ -92,6 +93,7 @@ public class Meteo {
    * Setter of the temperature.
    * @param temperature the temperature of the meteo entity in the database
    */
+  @JsonSetter("temp")
   public void setTemperature(int temperature) {
     this.temperature = temperature;
   }
@@ -100,7 +102,6 @@ public class Meteo {
    * Getter of the wave height.
    * @return the wave height of the meteo entity in the database
    */
-  @NotNull
   public int getWave() {
     return wave;
   }
@@ -126,25 +127,17 @@ public class Meteo {
    * Setter of the wind speed.
    * @param wind the wind speed of the meteo entity in the database
    */
+  @JsonSetter("speed")
   public void setWind(int wind) {
     this.wind = wind;
   }
 
-  /**
-   * Getter of the activity
-   * @return the activity
-   */
-  @OneToMany(mappedBy = "meteo")
-  @JsonManagedReference
-  public List<Activity> getActivity() {
-    return activity;
+  @ManyToOne
+  public City getCity() {
+    return city;
   }
 
-  /**
-   * Setter of the activity
-   * @param activity the activity to link
-   */
-  public void setActivity(List<Activity> activity) {
-    this.activity = activity;
+  public void setCity(City city) {
+    this.city = city;
   }
 }

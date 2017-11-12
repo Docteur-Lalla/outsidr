@@ -2,15 +2,19 @@ package fr.istic.m2;
 
 import fr.istic.m2.dao.DAO;
 import fr.istic.m2.entities.Activity;
+import fr.istic.m2.entities.Meteo;
 import fr.istic.m2.factory.DAOFactory;
 import fr.istic.m2.entities.Registration;
 import fr.istic.m2.entities.User;
+import fr.istic.m2.jackson.JacksonParsing;
+import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.type.TypeFactory;
 
 import javax.persistence.EntityManager;
 import javax.swing.*;
 import java.io.IOException;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -27,11 +31,15 @@ public class JPATest {
     public static void main(String[] args) throws IOException {
         JPATest test = new JPATest(EntityManagerHelper.getEntityManager());
 
+        JacksonParsing jackson = new JacksonParsing();
+
+        //jackson.firstParsing();
+
         //ObjectMapper map = new ObjectMapper();
 
         //byte[] json = Files.readAllBytes(Paths.get("C:\\Users\\jmahe\\Desktop\\User.txt"));
 
-        //List<User> user = map.readValue(json, TypeFactory.defaultInstance().constructCollectionType(List.class, User.class));
+        //List<Meteo> me = map.readValue(new URL("http://api.openweathermap.org/data/2.5/box/city?bbox=-4.860856545312458,41.309041165576524,9.674055564062542,51.10892986765849,100000&APPID=cd04d5db91342e48c53e08b7a2fe6b2d"), TypeFactory.defaultInstance().constructCollectionType(List.class, Meteo.class));
 
         //for (User u : user) {
           //  test.createUser(u);

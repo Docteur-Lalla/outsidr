@@ -6,6 +6,11 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
+/**
+ * Entity representing a city where activities take place.
+ *
+ * @see Activity
+ */
 @Entity
 public class City {
 
@@ -15,17 +20,33 @@ public class City {
     private String name;
     private String country;
 
-    private List<Activity> act;
-    private List<Meteo> met;
+    private List<Activity> activities;
+    private List<Meteo> meteos;
 
-    public City(){}
+    /**
+     * Default constructor.
+     */
+    public City() {
+    }
 
-    public City(int cityID, String name, String country){
+    /**
+     * Constructor with a parameter for each field of the class.
+     *
+     * @param cityID  the city's ID
+     * @param name    the city's name
+     * @param country the country where the city is situated
+     */
+    public City(int cityID, String name, String country) {
         this.cityID = cityID;
         this.name = name;
         this.country = country;
     }
 
+    /**
+     * Getter for the city's database-internal ID.
+     *
+     * @return the city's database-internal ID
+     */
     @Id
     @NotNull
     @GeneratedValue
@@ -33,50 +54,105 @@ public class City {
         return id;
     }
 
+    /**
+     * Getter for the city's ID.
+     *
+     * @return the city's ID
+     */
     public int getCityID() {
         return cityID;
     }
 
+    /**
+     * Getter for the city's name.
+     *
+     * @return the city's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Getter for the country.
+     *
+     * @return the country where the city is situated
+     */
     public String getCountry() {
         return country;
     }
 
+    /**
+     * Getter for the activities that take place in the city.
+     *
+     * @return the activities
+     */
     @OneToMany(mappedBy = "city")
-    public List<Activity> getAct() {
-        return act;
+    public List<Activity> getActivities() {
+        return activities;
     }
 
+    /**
+     * Getter for the meteos associated with the city.
+     *
+     * @return the meteos
+     */
     @OneToMany(mappedBy = "city")
-    public List<Meteo> getMet() {
-        return met;
+    public List<Meteo> getMeteos() {
+        return meteos;
     }
 
+    /**
+     * Setter for the city's database-internal ID.
+     *
+     * @param id the city's database-internal ID
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Setter for the city's ID.
+     *
+     * @param cityID the city's ID
+     */
     public void setCityID(int cityID) {
         this.cityID = cityID;
     }
 
+    /**
+     * Setter for the city's name.
+     *
+     * @param name the city's name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Setter for the country where the city is situated.
+     *
+     * @param country the country
+     */
     public void setCountry(String country) {
         this.country = country;
     }
 
-    public void setAct(List<Activity> act) {
-        this.act = act;
+    /**
+     * Setter for the activities that take place in the city.
+     *
+     * @param act the activities
+     */
+    public void setActivities(List<Activity> act) {
+        this.activities = act;
     }
 
-    public void setMet(List<Meteo> met) {
-        this.met = met;
+    /**
+     * Setter for the meteos of the city.
+     *
+     * @param met the meteos
+     */
+    public void setMeteos(List<Meteo> met) {
+        this.meteos = met;
     }
 
 }

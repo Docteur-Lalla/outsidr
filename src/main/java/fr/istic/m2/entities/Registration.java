@@ -102,6 +102,7 @@ public class Registration {
    */
   @ManyToOne
   @Id
+//  @JsonManagedReference
   public User getUser() {
     return user;
   }
@@ -120,7 +121,7 @@ public class Registration {
    */
   @ManyToOne
   @Id
-  @JsonManagedReference
+//  @JsonManagedReference
   public Activity getActivity() {
     return activity;
   }

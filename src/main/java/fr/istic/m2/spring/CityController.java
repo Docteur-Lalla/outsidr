@@ -42,7 +42,7 @@ public class CityController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public City getCityById(@PathVariable int id) {
-        return this.cityRepository.findOne(id);
+        return this.cityRepository.findByCityID(id);
     }
 
     /**
@@ -52,7 +52,7 @@ public class CityController {
      * @return a HTTP 200 response if the given user entity is valid, HTTP 400 otherwise
      */
     @RequestMapping(value = "/save", method = RequestMethod.POST, consumes = "application/json")
-    public ResponseEntity<City> saveNewUser(@RequestBody City city) {
+    public ResponseEntity<City> saveNewCity(@RequestBody City city) {
         if (city != null) {
             this.cityRepository.save(city);
             return new ResponseEntity<City>(city, HttpStatus.OK);

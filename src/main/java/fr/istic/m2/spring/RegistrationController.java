@@ -64,7 +64,7 @@ public class RegistrationController {
      * @return the registration entity in JSON format
      */
     @RequestMapping(value = "/user={id}", method = RequestMethod.GET, produces = "application/json")
-    public Registration getRegistrationByUser(@PathVariable int id) {
+    public List<Registration> getRegistrationByUser(@PathVariable int id) {
         User user = this.userRepository.findOne(id);
         return this.registrationRepository.findByUser(user);
     }

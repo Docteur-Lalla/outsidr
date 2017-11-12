@@ -87,7 +87,7 @@ public class City {
      * @return the activities
      */
     @OneToMany(mappedBy = "city")
-    @JsonBackReference
+    @JsonBackReference(value="city-activity")
     public List<Activity> getActivities() {
         return activities;
     }

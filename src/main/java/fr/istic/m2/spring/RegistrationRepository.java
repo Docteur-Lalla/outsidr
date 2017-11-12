@@ -14,7 +14,7 @@ public interface RegistrationRepository extends JpaRepository<Registration, Inte
 
     Registration findOne(Integer id);
 
-    Registration findByUser(User user);
+    List<Registration> findByUser(User user);
 
     Registration findByActivity(Activity activity);
 

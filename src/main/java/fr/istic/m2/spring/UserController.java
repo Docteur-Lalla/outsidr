@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Spring controller of the REST API for the User entity.
+ *
  * @see User
  */
 @RestController
@@ -47,6 +48,18 @@ public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public User getUserById(@PathVariable int id) {
         return this.userRepository.findOne(id);
+    }
+
+    /**
+     * Route used to get a User entity in JSON format identified by the pair (name, password).
+     *
+     * @param name   the username
+     * @param passwd the user's password
+     * @return the user entity in JSON format
+     */
+    @RequestMapping(value = "/name={name}/passwd={passwd}", method = RequestMethod.GET, produces = "application/json")
+    public User getUserByNameAndPassword(@PathVariable String name, @PathVariable String passwd) {
+        return this.userRepository.findByNameAndPassword(name, passwd);
     }
 
     /**

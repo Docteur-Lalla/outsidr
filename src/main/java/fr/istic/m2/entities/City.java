@@ -1,6 +1,7 @@
 package fr.istic.m2.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -59,6 +60,7 @@ public class City {
      *
      * @return the city's ID
      */
+    @JsonProperty("id")
     public int getCityID() {
         return cityID;
     }
@@ -68,6 +70,7 @@ public class City {
      *
      * @return the city's name
      */
+    @JsonProperty("name")
     public String getName() {
         return name;
     }
@@ -77,6 +80,7 @@ public class City {
      *
      * @return the country where the city is situated
      */
+    @JsonProperty("country")
     public String getCountry() {
         return country;
     }

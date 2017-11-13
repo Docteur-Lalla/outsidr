@@ -1,6 +1,7 @@
 package fr.istic.m2.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -89,6 +90,7 @@ public class Activity {
   }
 
   @ManyToOne
+  //@JsonManagedReference(value="city-activity")
   public City getCity() {
     return city;
   }

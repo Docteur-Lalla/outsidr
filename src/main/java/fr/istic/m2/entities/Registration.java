@@ -4,65 +4,6 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
-
-/**
- * Class embedding the composite key for the Registration entity.
- * @see Registration
- */
-class CompositeKey implements Serializable {
-  private User user;
-  private Activity activity;
-
-  /**
-   * Default constructor
-   */
-  public CompositeKey() {
-
-  }
-
-  /**
-   * Constructor with a parameter for each field of the class.
-   * @param user the user
-   * @param activity the activity the user is registered in
-   */
-  public CompositeKey(User user, Activity activity) {
-    this.user = user;
-    this.activity = activity;
-  }
-
-  /**
-   * Getter of the user.
-   * @return the user
-   */
-  public User getUser() {
-    return user;
-  }
-
-  /**
-   * Setter of the user.
-   * @param user the user
-   */
-  public void setUser(User user) {
-    this.user = user;
-  }
-
-  /**
-   * Getter of the activity.
-   * @return the activity
-   */
-  public Activity getActivity() {
-    return activity;
-  }
-
-  /**
-   * Setter of the activity.
-   * @param activity the activity
-   */
-  public void setActivity(Activity activity) {
-    this.activity = activity;
-  }
-}
 
 /**
  * Class representing the association of a user and an activity in the database.
@@ -70,8 +11,8 @@ class CompositeKey implements Serializable {
  * @see Activity
  */
 @Entity
-@IdClass(CompositeKey.class)
 public class Registration {
+  private int id;
   private User user;
   private Activity activity;
   private String level;
@@ -95,13 +36,31 @@ public class Registration {
     this.level = level;
   }
 
+  /**
+   * Getter of the ID.
+   *
+   * @return the ID
+   */
+  @Id
+  public int getId() {
+    return this.id;
+  }
+
+  /**
+   * Setter of the ID.
+   *
+   * @param id the ID
+   */
+  public void setId(int id) {
+    this.id = id;
+  }
 
   /**
    * Getter of the user.
    * @return the user
    */
   @ManyToOne
-  @Id
+//  @JsonManagedReference
   public User getUser() {
     return user;
   }
@@ -119,8 +78,7 @@ public class Registration {
    * @return the activity
    */
   @ManyToOne
-  @Id
-  @JsonManagedReference
+//  @JsonManagedReference
   public Activity getActivity() {
     return activity;
   }

@@ -1,5 +1,6 @@
 package fr.istic.m2.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,7 +16,6 @@ import java.util.List;
 @Entity
 public class City {
 
-    @JsonIgnore
     private int id;
     private int cityID;
     private String name;
@@ -91,6 +91,7 @@ public class City {
      * @return the activities
      */
     @OneToMany(mappedBy = "city")
+    @JsonBackReference(value="city-activity")
     public List<Activity> getActivities() {
         return activities;
     }
@@ -101,6 +102,7 @@ public class City {
      * @return the meteos
      */
     @OneToMany(mappedBy = "city")
+    @JsonBackReference
     public List<Meteo> getMeteos() {
         return meteos;
     }

@@ -12,7 +12,7 @@ import java.util.List;
 public interface CityRepository extends JpaRepository<City, Integer> {
     List<City> findAll();
 
-    City findOne(Integer id);
+    City findByCityID(Integer id);
 
     City save(City city);
 

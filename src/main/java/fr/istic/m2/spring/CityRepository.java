@@ -1,5 +1,6 @@
 package fr.istic.m2.spring;
 
+import fr.istic.m2.entities.Activity;
 import fr.istic.m2.entities.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,4 +21,6 @@ public interface CityRepository extends JpaRepository<City, Integer> {
     void delete(Integer id);
 
     void deleteAll();
+
+    City findByActivities(Activity activity);
 }

@@ -1,5 +1,7 @@
 package fr.istic.m2;
 
+import fr.istic.m2.entities.Meteo;
+import fr.istic.m2.entities.MeteoMail;
 import fr.istic.m2.jackson.JacksonParsing;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

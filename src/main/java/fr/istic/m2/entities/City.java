@@ -21,7 +21,6 @@ public class City {
     private String country;
 
     private List<Activity> activities;
-    private List<Meteo> meteos;
 
     /**
      * Default constructor.
@@ -86,17 +85,6 @@ public class City {
     }
 
     /**
-     * Getter for the meteos associated with the city.
-     *
-     * @return the meteos
-     */
-    @OneToMany(mappedBy = "city")
-    @JsonBackReference
-    public List<Meteo> getMeteos() {
-        return meteos;
-    }
-
-    /**
      * Setter for the city's database-internal ID.
      *
      * @param id the city's database-internal ID
@@ -130,15 +118,6 @@ public class City {
      */
     public void setActivities(List<Activity> act) {
         this.activities = act;
-    }
-
-    /**
-     * Setter for the meteos of the city.
-     *
-     * @param met the meteos
-     */
-    public void setMeteos(List<Meteo> met) {
-        this.meteos = met;
     }
 
 }

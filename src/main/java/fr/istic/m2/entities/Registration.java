@@ -42,6 +42,7 @@ public class Registration {
    * @return the ID
    */
   @Id
+  @GeneratedValue
   public int getId() {
     return this.id;
   }

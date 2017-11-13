@@ -1,27 +1,15 @@
 package fr.istic.m2.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSetter;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
-/**
- * Entity representing the meteo of activities for the next week-end.
- * @see Activity
- */
-@Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Meteo {
 
-  @JsonIgnore
-  private int id;
-  private boolean snowing;
   private int temperature;
-  private int wave;
   private int wind;
-  private City city;
+  private String description;
+  private String date;
 
   /**
    * Default constructor
@@ -32,66 +20,29 @@ public class Meteo {
 
   /**
    * Constructor with a parameter for each field of the class.
-   * @param snowing true if it is snowing, false otherwise
    * @param temperature the temperature in degree celsius
-   * @param wave the height of the waves in meters
    * @param wind the speed of the wind in Beaufort
+   * @param description the description of the meteo
+   * @param date the date of the meteo
   */
-  public Meteo(boolean snowing, int temperature, int wave, int wind) {
-    this.snowing = snowing;
+  public Meteo(int temperature, int wind, String description, String date) {
     this.temperature = temperature;
-    this.wave = wave;
     this.wind = wind;
-  }
-
-  /**
-   * Getter of the ID.
-   * @return the ID of the meteo entity in the database
-   */
-  @Id
-  @NotNull
-  @GeneratedValue
-  public int getId() {
-    return id;
-  }
-
-  /**
-   * Setter of the ID.
-   * @param id the ID of the meteo entity in the database
-   */
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  /**
-   * Getter of the snowing attribute.
-   * @return the snowing attribute of the meteo entity
-   */
-  @NotNull
-  public boolean isSnowing() {
-    return snowing;
-  }
-
-  /**
-   * Setter of the snowing attribute.
-   * @param snowing the snowing attribute of the meteo entity
-   */
-  public void setSnowing(boolean snowing) {
-    this.snowing = snowing;
+    this.description = description;
+    this.date = date;
   }
 
   /**
    * Getter of the temperature.
-   * @return the temperature of the meteo entity in the database
+   * @return the temperature of the meteo
    */
-  @NotNull
   public int getTemperature() {
     return temperature;
   }
 
   /**
    * Setter of the temperature.
-   * @param temperature the temperature of the meteo entity in the database
+   * @param temperature the temperature of the meteo
    */
   @JsonSetter("temp")
   public void setTemperature(int temperature) {
@@ -99,45 +50,54 @@ public class Meteo {
   }
 
   /**
-   * Getter of the wave height.
-   * @return the wave height of the meteo entity in the database
-   */
-  public int getWave() {
-    return wave;
-  }
-
-  /**
-   * Setter of the wave height.
-   * @param wave the wave height of the meteo entity in the database
-   */
-  public void setWave(int wave) {
-    this.wave = wave;
-  }
-
-  /**
    * Getter of the wind speed.
-   * @return the wind speed of the meteo entity in the database
+   * @return the wind speed of the meteo
    */
-  @NotNull
   public int getWind() {
     return wind;
   }
 
   /**
    * Setter of the wind speed.
-   * @param wind the wind speed of the meteo entity in the database
+   * @param wind the wind speed of the meteo
    */
   @JsonSetter("speed")
   public void setWind(int wind) {
     this.wind = wind;
   }
 
-  @ManyToOne
-  public City getCity() {
-    return city;
+  /**
+   * Getter of the description.
+   * @return the description of the meteo
+   */
+  public String getDescription() {
+    return this.description;
   }
 
-  public void setCity(City city) {
-    this.city = city;
+  /**
+   * Setter of the description.
+   * @param description the description of the meteo
+   */
+  @JsonSetter("description")
+  public void setDescription(String description) {
+    this.description = description;
   }
+
+  /**
+   * Getter of the date.
+   * @return the date of the meteo
+   */
+  public String getDate() {
+    return this.date;
+  }
+
+  /**
+   * Setter of the date.
+   * @param date the date of the meteo
+   */
+  @JsonSetter("dt_txt")
+  public void setdate(String date) {
+    this.date = date;
+  }
+
 }

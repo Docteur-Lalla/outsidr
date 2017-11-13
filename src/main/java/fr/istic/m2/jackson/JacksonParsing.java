@@ -35,7 +35,7 @@ public class JacksonParsing {
             List<City> city = map.readValue(new File("src/main/resources/city.list.json"), TypeFactory.defaultInstance().constructCollectionType(List.class, City.class));
             for(City c : city){
                 if(c.getCountry().equals("FR")){
-                    repository.save(c);
+                    //repository.save(c);
                 }
             }
         } catch (IOException e) {
@@ -43,11 +43,13 @@ public class JacksonParsing {
         }
     }
 
-    public void firstParsing() throws IOException {
-
-
-
-        List<Meteo> me = map.readValue(new URL("http://api.openweathermap.org/data/2.5/box/city?bbox=-4.860856545312458,41.309041165576524,9.674055564062542,51.10892986765849,100000&APPID=cd04d5db91342e48c53e08b7a2fe6b2d"), MeteoList.class).getMeteoList();
+    public List<Meteo> meteoParsing(City city){
+        try {
+            return map.readValue(new URL("https://api.openweathermap.org/data/2.5/weather?id="+ city.getId() +"&APPID=cd04d5db91342e48c53e08b7a2fe6b2d"), TypeFactory.defaultInstance().constructCollectionType(List.class, Meteo.class));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

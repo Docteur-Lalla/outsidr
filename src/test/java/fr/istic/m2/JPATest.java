@@ -21,7 +21,7 @@ public class JPATest {
     public static void main(String[] args) throws IOException {
         JPATest test = new JPATest(EntityManagerHelper.getEntityManager());
 
-        JacksonParsing jackson = new JacksonParsing();
+        //JacksonParsing jackson = new JacksonParsing();
 
         //jackson.firstParsing();
 

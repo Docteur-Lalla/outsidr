@@ -42,7 +42,7 @@ public class CityController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET, produces = "application/json")
     public City getCityById(@PathVariable int id) {
-        return this.cityRepository.findByCityID(id);
+        return this.cityRepository.findByid(id);
     }
 
     /**

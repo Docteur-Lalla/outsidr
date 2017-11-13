@@ -17,7 +17,6 @@ import java.util.List;
 public class City {
 
     private int id;
-    private int cityID;
     private String name;
     private String country;
 
@@ -33,12 +32,12 @@ public class City {
     /**
      * Constructor with a parameter for each field of the class.
      *
-     * @param cityID  the city's ID
+     * @param id  the city's ID
      * @param name    the city's name
      * @param country the country where the city is situated
      */
-    public City(int cityID, String name, String country) {
-        this.cityID = cityID;
+    public City(int id, String name, String country) {
+        this.id = id;
         this.name = name;
         this.country = country;
     }
@@ -50,19 +49,9 @@ public class City {
      */
     @Id
     @NotNull
-    @GeneratedValue
+    @JsonProperty("id")
     public int getId() {
         return id;
-    }
-
-    /**
-     * Getter for the city's ID.
-     *
-     * @return the city's ID
-     */
-    @JsonProperty("id")
-    public int getCityID() {
-        return cityID;
     }
 
     /**
@@ -114,15 +103,6 @@ public class City {
      */
     public void setId(int id) {
         this.id = id;
-    }
-
-    /**
-     * Setter for the city's ID.
-     *
-     * @param cityID the city's ID
-     */
-    public void setCityID(int cityID) {
-        this.cityID = cityID;
     }
 
     /**
